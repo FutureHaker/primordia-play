@@ -1,2 +1,5 @@
-# primordia-play
-PRIMORDIA: Evolve - web preview (compiled game only; sources are private)
+# PRIMORDIA: Evolve — web-превью
+
+Играть: https://futurehaker.github.io/primordia-play/
+
+Здесь только собранная web-версия игры для проверки этапов. Исходный код — в приватном репозитории студии.
