@@ -136,6 +136,32 @@
     "kpi": { "rewardedPerDauMin": 3, "rewardedPerDauMax": 6 }
   },
 
+  "ocean": {
+    "_comment": "Этап 8, открытый океан. Масса растёт от еды; радиус = baseRadius * sqrt(mass). Добыча = (base * глоб.множитель + worthSec * доход/с) * (1 + massIncomeBonus * ln(масса)).",
+    "baseSpeed": 230,
+    "flagellumSpeedPerLevel": 0.03,
+    "maxSpeedMult": 2.0,
+    "baseRadius": 22,
+    "eatRatio": 0.85,
+    "mawRatioPerLevel": 0.005,
+    "maxEatRatio": 1.05,
+    "baseHits": 1,
+    "membraneLevelsPerHit": 3,
+    "hitMassLoss": 0.12,
+    "eatenMassLoss": 0.25,
+    "respawnShieldSec": 2.5,
+    "hitRegenSec": 12,
+    "growthFromPrey": 0.22,
+    "massIncomeBonus": 0.15,
+    "maxEntities": 110,
+    "prey": {
+      "molecule":  { "share": 0.46, "massMin": 0.04, "massMax": 0.18, "worthSec": 0.10, "base": 1.0, "speed": 0.0 },
+      "bacterium": { "share": 0.34, "massMin": 0.15, "massMax": 0.60, "worthSec": 0.30, "base": 2.0, "speed": 0.55 },
+      "rival":     { "share": 0.12, "massMin": 0.55, "massMax": 1.50, "worthSec": 1.50, "base": 6.0, "speed": 0.70 },
+      "predator":  { "share": 0.08, "massMin": 1.35, "massMax": 3.00, "worthSec": 3.00, "base": 12.0, "speed": 0.78 }
+    }
+  },
+
   "liveops": {
     "_comment": "Удержание: ежедневный вход (цикл 7 дней), 3 задания дня, событие выходных. incomeMinutes — минуты текущего дохода без бустов.",
     "dailyLogin": {
@@ -153,7 +179,7 @@
     "quests": {
       "perDay": 3,
       "pool": [
-        { "id": "taps",       "track": "taps",       "target": 150, "perEpoch": 0,  "minEpoch": 1, "protein": 10, "incomeMinutes": 5 },
+        { "id": "eat",        "track": "eat",        "target": 60,  "perEpoch": 10, "minEpoch": 1, "protein": 10, "incomeMinutes": 5 },
         { "id": "collectors", "track": "collectors", "target": 20,  "perEpoch": 10, "minEpoch": 1, "protein": 10, "incomeMinutes": 8 },
         { "id": "golden",     "track": "golden",     "target": 3,   "perEpoch": 0,  "minEpoch": 1, "protein": 15, "incomeMinutes": 5 },
         { "id": "organelles", "track": "organelles", "target": 3,   "perEpoch": 0,  "minEpoch": 1, "protein": 5,  "incomeMinutes": 10 },
