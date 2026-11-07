@@ -1,142 +1,480 @@
 {
   "schemaVersion": 2,
   "_comment": "PRIMORDIA: Evolve — все константы баланса. Меняются без правки кода. Этап 2, Математик.",
-
   "tap": {
     "base": 1.0,
     "ipsShare": 0.04,
     "maxCountedTapsPerSec": 8
   },
-
   "generators": [
-    { "id": "cilia",      "name": "Ворсинки",             "epoch": 1, "baseCost": 15,     "growth": 1.07, "income": 0.5 },
-    { "id": "vacuole",    "name": "Вакуоль-ловушка",      "epoch": 1, "baseCost": 150,    "growth": 1.08, "income": 4 },
-    { "id": "daughter",   "name": "Дочерние клетки",      "epoch": 2, "baseCost": 2.0e3,  "growth": 1.09, "income": 30 },
-    { "id": "symbiont",   "name": "Симбионты",            "epoch": 2, "baseCost": 3.0e4,  "growth": 1.10, "income": 220 },
-    { "id": "tissue",     "name": "Ткани",                "epoch": 3, "baseCost": 5.0e5,  "growth": 1.11, "income": 1.6e3 },
-    { "id": "gut",        "name": "Пищеварительный орган", "epoch": 4, "baseCost": 9.0e6,  "growth": 1.12, "income": 1.2e4 },
-    { "id": "reef",       "name": "Коралловый фильтр",    "epoch": 5, "baseCost": 1.8e8,  "growth": 1.13, "income": 9.5e4 },
-    { "id": "mycelium",   "name": "Мицелий суши",         "epoch": 6, "baseCost": 4.0e9,  "growth": 1.14, "income": 8.0e5 }
+    {
+      "id": "cilia",
+      "name": "Ворсинки",
+      "epoch": 1,
+      "baseCost": 15,
+      "growth": 1.07,
+      "income": 0.5
+    },
+    {
+      "id": "vacuole",
+      "name": "Вакуоль-ловушка",
+      "epoch": 1,
+      "baseCost": 150,
+      "growth": 1.08,
+      "income": 4
+    },
+    {
+      "id": "daughter",
+      "name": "Дочерние клетки",
+      "epoch": 2,
+      "baseCost": 2000.0,
+      "growth": 1.09,
+      "income": 30
+    },
+    {
+      "id": "symbiont",
+      "name": "Симбионты",
+      "epoch": 2,
+      "baseCost": 30000.0,
+      "growth": 1.1,
+      "income": 220
+    },
+    {
+      "id": "tissue",
+      "name": "Ткани",
+      "epoch": 3,
+      "baseCost": 500000.0,
+      "growth": 1.11,
+      "income": 1600.0
+    },
+    {
+      "id": "gut",
+      "name": "Пищеварительный орган",
+      "epoch": 4,
+      "baseCost": 9000000.0,
+      "growth": 1.12,
+      "income": 12000.0
+    },
+    {
+      "id": "reef",
+      "name": "Коралловый фильтр",
+      "epoch": 5,
+      "baseCost": 180000000.0,
+      "growth": 1.13,
+      "income": 95000.0
+    },
+    {
+      "id": "mycelium",
+      "name": "Мицелий суши",
+      "epoch": 6,
+      "baseCost": 4000000000.0,
+      "growth": 1.14,
+      "income": 800000.0
+    }
   ],
-
   "milestones": {
     "_comment": "При достижении count штук генератор получает ×mult (перемножаются).",
     "list": [
-      { "count": 25,  "mult": 2 },
-      { "count": 50,  "mult": 2 },
-      { "count": 100, "mult": 3 },
-      { "count": 200, "mult": 3 },
-      { "count": 300, "mult": 3 },
-      { "count": 400, "mult": 4 }
+      {
+        "count": 25,
+        "mult": 2
+      },
+      {
+        "count": 50,
+        "mult": 2
+      },
+      {
+        "count": 100,
+        "mult": 3
+      },
+      {
+        "count": 200,
+        "mult": 3
+      },
+      {
+        "count": 300,
+        "mult": 3
+      },
+      {
+        "count": 400,
+        "mult": 4
+      }
     ]
   },
-
   "mutations": {
     "_comment": "Разовые улучшения генератора: доступна, когда owned >= unlockAt; цена = baseCost * costMult; доход генератора ×mult.",
     "perGenerator": [
-      { "unlockAt": 10,  "costMult": 100,   "mult": 2 },
-      { "unlockAt": 25,  "costMult": 5.0e3, "mult": 3 },
-      { "unlockAt": 50,  "costMult": 2.5e5, "mult": 3 },
-      { "unlockAt": 100, "costMult": 2.0e7, "mult": 4 }
+      {
+        "unlockAt": 10,
+        "costMult": 100,
+        "mult": 2
+      },
+      {
+        "unlockAt": 25,
+        "costMult": 5000.0,
+        "mult": 3
+      },
+      {
+        "unlockAt": 50,
+        "costMult": 250000.0,
+        "mult": 3
+      },
+      {
+        "unlockAt": 100,
+        "costMult": 20000000.0,
+        "mult": 4
+      }
     ],
     "tap": [
-      { "cost": 60,     "baseMult": 2, "ipsShareAdd": 0.00 },
-      { "cost": 1.5e3,  "baseMult": 2, "ipsShareAdd": 0.02 },
-      { "cost": 6.0e4,  "baseMult": 2, "ipsShareAdd": 0.02 },
-      { "cost": 3.0e6,  "baseMult": 2, "ipsShareAdd": 0.02 },
-      { "cost": 2.0e8,  "baseMult": 2, "ipsShareAdd": 0.02 }
+      {
+        "cost": 60,
+        "baseMult": 2,
+        "ipsShareAdd": 0.0
+      },
+      {
+        "cost": 1500.0,
+        "baseMult": 2,
+        "ipsShareAdd": 0.02
+      },
+      {
+        "cost": 60000.0,
+        "baseMult": 2,
+        "ipsShareAdd": 0.02
+      },
+      {
+        "cost": 3000000.0,
+        "baseMult": 2,
+        "ipsShareAdd": 0.02
+      },
+      {
+        "cost": 200000000.0,
+        "baseMult": 2,
+        "ipsShareAdd": 0.02
+      }
     ]
   },
-
   "epochs": [
-    { "id": 1, "name": "Капля",           "jumpCost": 0,      "globalMult": 1.0, "bossId": null },
-    { "id": 2, "name": "Колония",         "jumpCost": 2.0e5,  "globalMult": 1.5, "bossId": null },
-    { "id": 3, "name": "Многоклеточный",  "jumpCost": 6.0e7,  "globalMult": 1.5, "bossId": null },
-    { "id": 4, "name": "Пруд",            "jumpCost": 3.0e9,  "globalMult": 1.5, "bossId": "predator_amoeba" },
-    { "id": 5, "name": "Риф",             "jumpCost": 3.0e11, "globalMult": 1.5, "bossId": "amoeba_queen" },
-    { "id": 6, "name": "Берег",           "jumpCost": 1.0e16, "globalMult": 1.5, "bossId": "virus" },
-    { "id": 7, "name": "???",             "jumpCost": 3.0e18, "globalMult": 2.0, "bossId": "observer_lens", "requiresObserver": 6 }
+    {
+      "id": 1,
+      "name": "Капля",
+      "jumpCost": 0,
+      "globalMult": 1.0,
+      "bossId": null
+    },
+    {
+      "id": 2,
+      "name": "Колония",
+      "jumpCost": 200000.0,
+      "globalMult": 1.5,
+      "bossId": null
+    },
+    {
+      "id": 3,
+      "name": "Многоклеточный",
+      "jumpCost": 60000000.0,
+      "globalMult": 1.5,
+      "bossId": null
+    },
+    {
+      "id": 4,
+      "name": "Пруд",
+      "jumpCost": 3000000000.0,
+      "globalMult": 1.5,
+      "bossId": "predator_amoeba"
+    },
+    {
+      "id": 5,
+      "name": "Риф",
+      "jumpCost": 300000000000.0,
+      "globalMult": 1.5,
+      "bossId": "amoeba_queen"
+    },
+    {
+      "id": 6,
+      "name": "Берег",
+      "jumpCost": 1e+16,
+      "globalMult": 1.5,
+      "bossId": "virus"
+    },
+    {
+      "id": 7,
+      "name": "???",
+      "jumpCost": 3e+18,
+      "globalMult": 2.0,
+      "bossId": "observer_lens",
+      "requiresObserver": 6
+    }
   ],
-  "incubationSec": [0, 0, 60, 300, 900, 1800, 3600],
-
+  "incubationSec": [
+    0,
+    0,
+    60,
+    300,
+    900,
+    1800,
+    3600
+  ],
   "hero": {
     "_comment": "Герой-организм. DPS = baseDps * rarity * Π(perLevel^level по слотам stat=dps) * (1 + predator*ур). Бой = bossFightSec + Σ(perLevel*ур по fightTime). Доход ×(1 + perLevel*ур по income). Цена уровня = ceil(base * growth^level). Редкость организма = лучшая найденная мутация.",
     "baseDps": 10,
     "slots": [
-      { "id": "maw",       "name": "Пасть",      "stat": "dps",       "perLevel": 1.10, "maxLevel": 0 },
-      { "id": "flagellum", "name": "Жгутик",     "stat": "dps",       "perLevel": 1.06, "maxLevel": 0 },
-      { "id": "membrane",  "name": "Мембрана",   "stat": "fightTime", "perLevel": 3.0,  "maxLevel": 10 },
-      { "id": "plastid",   "name": "Хлоропласт", "stat": "income",    "perLevel": 0.03, "maxLevel": 25 }
+      {
+        "id": "maw",
+        "name": "Пасть",
+        "stat": "dps",
+        "perLevel": 1.1,
+        "maxLevel": 0
+      },
+      {
+        "id": "flagellum",
+        "name": "Жгутик",
+        "stat": "dps",
+        "perLevel": 1.06,
+        "maxLevel": 0
+      },
+      {
+        "id": "membrane",
+        "name": "Мембрана",
+        "stat": "fightTime",
+        "perLevel": 3.0,
+        "maxLevel": 10
+      },
+      {
+        "id": "plastid",
+        "name": "Хлоропласт",
+        "stat": "income",
+        "perLevel": 0.03,
+        "maxLevel": 25
+      }
     ],
-    "upgradeCost": { "base": 10, "growth": 1.15 },
-    "rarityMult": { "common": 1.0, "rare": 1.5, "epic": 2.5, "legendary": 4.0 },
+    "upgradeCost": {
+      "base": 10,
+      "growth": 1.15
+    },
+    "rarityMult": {
+      "common": 1.0,
+      "rare": 1.5,
+      "epic": 2.5,
+      "legendary": 4.0
+    },
     "tapDamageShareOfDps": 0.12,
     "bossFightSec": 30,
     "bosses": {
-      "predator_amoeba": { "hp": 3.0e4 },
-      "amoeba_queen":    { "hp": 2.0e5 },
-      "virus":           { "hp": 1.5e6 },
-      "observer_lens":   { "hp": 2.2e7 }
+      "predator_amoeba": {
+        "hp": 30000.0
+      },
+      "amoeba_queen": {
+        "hp": 200000.0
+      },
+      "virus": {
+        "hp": 1500000.0
+      },
+      "observer_lens": {
+        "hp": 22000000.0
+      }
     }
   },
-
   "protein": {
     "_comment": "Белок — валюта героя. Источники: золотые мутагены, набеги хищников, пассивно.",
-    "goldenMutagen": { "intervalSec": 90, "visibleSec": 10, "protein": 4, "nutrientSec": 30 },
-    "raid": { "intervalSec": 300, "fromEpoch": 3, "proteinPerEpoch": 15, "tapsToDefend": 15, "windowSec": 10 },
+    "goldenMutagen": {
+      "intervalSec": 90,
+      "visibleSec": 10,
+      "protein": 4,
+      "nutrientSec": 30
+    },
+    "raid": {
+      "intervalSec": 300,
+      "fromEpoch": 3,
+      "proteinPerEpoch": 15,
+      "tapsToDefend": 15,
+      "windowSec": 10
+    },
     "passivePerMin": 1
   },
-
   "prestige": {
     "_comment": "DNA = floor(k * (lifetimeRun / div)^exponent). Каждая ДНК навсегда даёт +dnaBonus к доходу; трата ДНК на гены бонус не уменьшает.",
     "minEpoch": 4,
     "minGainToOffer": 10,
     "recommendGainShare": 0.5,
     "k": 1.0,
-    "div": 1.0e9,
+    "div": 1000000000.0,
     "exponent": 0.35,
     "dnaBonus": 0.02,
     "genes": [
-      { "id": "genome",      "branch": "Метаболизм", "maxLevel": 9999, "costBase": 1, "costGrowth": 1.25, "value": 0.10, "effect": "доход +10%/ур; цена ceil(1.25^ур)" },
-      { "id": "quick_start", "branch": "Метаболизм", "maxLevel": 5,  "costBase": 2, "costStep": 2, "levels": [10, 25, 50, 100, 200], "effect": "старт с 10/25/50/100/200 ворсинок" },
-      { "id": "offline_cap", "branch": "Метаболизм", "maxLevel": 6,  "costBase": 3, "costStep": 3, "value": 3600, "effect": "офлайн-лимит +1 ч/ур (2 ч → 8 ч)" },
-      { "id": "offline_eff", "branch": "Метаболизм", "maxLevel": 5,  "costBase": 3, "costStep": 3, "value": 0.10, "effect": "офлайн-эффективность +10%/ур (40% → 90%)" },
-      { "id": "predator",    "branch": "Хищник",     "maxLevel": 10, "costBase": 2, "costStep": 1, "value": 0.20, "effect": "DPS героя +20%/ур" },
-      { "id": "golden_eye",  "branch": "Хищник",     "maxLevel": 5,  "costBase": 2, "costStep": 2, "value": 0.10, "effect": "золотые мутагены на 10% чаще/ур" },
-      { "id": "frenzy",      "branch": "Хищник",     "maxLevel": 5,  "costBase": 3, "costStep": 2, "value": 1.5, "effect": "тап ×1.5/ур" },
-      { "id": "cheap_cells", "branch": "Симбиоз",    "maxLevel": 5,  "costBase": 3, "costStep": 3, "value": 0.03, "effect": "цены генераторов −3%/ур" },
-      { "id": "keep_mutation","branch": "Симбиоз",   "maxLevel": 1,  "costBase": 15,"costStep": 0, "value": 1, "effect": "после Панспермии остаются мутации тапа" },
-      { "id": "auto_buy",    "branch": "Симбиоз",    "maxLevel": 1,  "costBase": 10,"costStep": 0, "value": 1, "effect": "авто-покупка генераторов" },
-      { "id": "observer",    "branch": "Наблюдатель","maxLevel": 6,  "costBase": 5, "costStep": 5, "value": 1, "effect": "записи Наблюдателя; ур.6 → эпоха 7" }
+      {
+        "id": "genome",
+        "branch": "Метаболизм",
+        "maxLevel": 9999,
+        "costBase": 1,
+        "costGrowth": 1.25,
+        "value": 0.1,
+        "effect": "доход +10%/ур; цена ceil(1.25^ур)"
+      },
+      {
+        "id": "quick_start",
+        "branch": "Метаболизм",
+        "maxLevel": 5,
+        "costBase": 2,
+        "costStep": 2,
+        "levels": [
+          10,
+          25,
+          50,
+          100,
+          200
+        ],
+        "effect": "старт с 10/25/50/100/200 ворсинок"
+      },
+      {
+        "id": "offline_cap",
+        "branch": "Метаболизм",
+        "maxLevel": 6,
+        "costBase": 3,
+        "costStep": 3,
+        "value": 3600,
+        "effect": "офлайн-лимит +1 ч/ур (2 ч → 8 ч)"
+      },
+      {
+        "id": "offline_eff",
+        "branch": "Метаболизм",
+        "maxLevel": 5,
+        "costBase": 3,
+        "costStep": 3,
+        "value": 0.1,
+        "effect": "офлайн-эффективность +10%/ур (40% → 90%)"
+      },
+      {
+        "id": "predator",
+        "branch": "Хищник",
+        "maxLevel": 10,
+        "costBase": 2,
+        "costStep": 1,
+        "value": 0.2,
+        "effect": "DPS героя +20%/ур"
+      },
+      {
+        "id": "golden_eye",
+        "branch": "Хищник",
+        "maxLevel": 5,
+        "costBase": 2,
+        "costStep": 2,
+        "value": 0.1,
+        "effect": "золотые мутагены на 10% чаще/ур"
+      },
+      {
+        "id": "frenzy",
+        "branch": "Хищник",
+        "maxLevel": 5,
+        "costBase": 3,
+        "costStep": 2,
+        "value": 1.5,
+        "effect": "тап ×1.5/ур"
+      },
+      {
+        "id": "cheap_cells",
+        "branch": "Симбиоз",
+        "maxLevel": 5,
+        "costBase": 3,
+        "costStep": 3,
+        "value": 0.03,
+        "effect": "цены генераторов −3%/ур"
+      },
+      {
+        "id": "keep_mutation",
+        "branch": "Симбиоз",
+        "maxLevel": 1,
+        "costBase": 15,
+        "costStep": 0,
+        "value": 1,
+        "effect": "после Панспермии остаются мутации тапа"
+      },
+      {
+        "id": "auto_buy",
+        "branch": "Симбиоз",
+        "maxLevel": 1,
+        "costBase": 10,
+        "costStep": 0,
+        "value": 1,
+        "effect": "авто-покупка генераторов"
+      },
+      {
+        "id": "observer",
+        "branch": "Наблюдатель",
+        "maxLevel": 6,
+        "costBase": 5,
+        "costStep": 5,
+        "value": 1,
+        "effect": "записи Наблюдателя; ур.6 → эпоха 7"
+      }
     ]
   },
-
   "offline": {
     "baseCapSec": 7200,
     "baseEfficiency": 0.4,
     "minAwaySec": 120
   },
-
   "ads": {
     "rewarded": {
-      "mutagen_boost":   { "incomeMult": 2.0, "durationSec": 240, "maxStackSec": 1800, "unlockAtSec": 180, "dailyCap": 6 },
-      "nutrient_burst":  { "incomeSec": 7200, "cooldownSec": 1800, "unlockAtEpoch": 2, "minShareOfGoal": 0.2, "dailyCap": 3 },
-      "offline_double":  { "mult": 2.0, "minOfflineSec": 1800, "dailyCap": 3 },
-      "rare_mutation":   { "firstFreeChestSec": 600, "freeEverySec": 14400, "adEverySec": 1800, "dailyCap": 3, "rarityWeights": { "rare": 70, "epic": 25, "legendary": 5 } },
-      "skip_incubation": { "skipSec": 1800, "dailyCap": 3 },
-      "boss_frenzy":     { "dpsMult": 1.5, "extraSec": 10, "perFight": 1, "dailyCap": 5 },
-      "free_upgrade":    { "dailyCap": 5, "minShareOfBalance": 0.2 }
+      "mutagen_boost": {
+        "incomeMult": 2.0,
+        "durationSec": 240,
+        "maxStackSec": 1800,
+        "unlockAtSec": 180,
+        "dailyCap": 6
+      },
+      "nutrient_burst": {
+        "incomeSec": 7200,
+        "cooldownSec": 1800,
+        "unlockAtEpoch": 2,
+        "minShareOfGoal": 0.2,
+        "dailyCap": 3
+      },
+      "offline_double": {
+        "mult": 2.0,
+        "minOfflineSec": 1800,
+        "dailyCap": 3
+      },
+      "rare_mutation": {
+        "firstFreeChestSec": 600,
+        "freeEverySec": 14400,
+        "adEverySec": 1800,
+        "dailyCap": 3,
+        "rarityWeights": {
+          "rare": 70,
+          "epic": 25,
+          "legendary": 5
+        }
+      },
+      "skip_incubation": {
+        "skipSec": 1800,
+        "dailyCap": 3
+      },
+      "boss_frenzy": {
+        "dpsMult": 1.5,
+        "extraSec": 10,
+        "perFight": 1,
+        "dailyCap": 5
+      },
+      "free_upgrade": {
+        "dailyCap": 5,
+        "minShareOfBalance": 0.2
+      }
     },
     "interstitial": {
-      "placements": ["after_offline_window", "after_panspermia"],
+      "placements": [
+        "after_offline_window",
+        "after_panspermia"
+      ],
       "cooldownSec": 180,
       "graceSec": 600,
       "skipIfRewardedWithinSec": 180,
       "disabledByNoAdsPurchase": true
     },
-    "kpi": { "rewardedPerDauMin": 3, "rewardedPerDauMax": 6 }
+    "kpi": {
+      "rewardedPerDauMin": 3,
+      "rewardedPerDauMax": 6
+    }
   },
-
   "ocean": {
     "_comment": "Этап 8, открытый океан. Масса растёт от еды; радиус = baseRadius * sqrt(mass). Добыча = (base * глоб.множитель + worthSec * доход/с) * (1 + massIncomeBonus * ln(масса)).",
     "baseSpeed": 330,
@@ -156,15 +494,42 @@
     "massIncomeBonus": 0.15,
     "maxEntities": 120,
     "prey": {
-      "molecule":  { "share": 0.50, "massMin": 0.04, "massMax": 0.18, "worthSec": 0.06, "base": 1.0, "speed": 0.0 },
-      "bacterium": { "share": 0.33, "massMin": 0.15, "massMax": 0.60, "worthSec": 0.18, "base": 2.0, "speed": 0.55 },
-      "rival":     { "share": 0.12, "massMin": 0.55, "massMax": 1.50, "worthSec": 1.00, "base": 6.0, "speed": 0.70 },
-      "predator":  { "share": 0.05, "massMin": 1.35, "massMax": 3.00, "worthSec": 2.00, "base": 12.0, "speed": 0.78 }
+      "molecule": {
+        "share": 0.5,
+        "massMin": 0.04,
+        "massMax": 0.18,
+        "worthSec": 0.06,
+        "base": 1.0,
+        "speed": 0.0
+      },
+      "bacterium": {
+        "share": 0.33,
+        "massMin": 0.15,
+        "massMax": 0.6,
+        "worthSec": 0.18,
+        "base": 2.0,
+        "speed": 0.55
+      },
+      "rival": {
+        "share": 0.12,
+        "massMin": 0.55,
+        "massMax": 1.5,
+        "worthSec": 1.0,
+        "base": 6.0,
+        "speed": 0.7
+      },
+      "predator": {
+        "share": 0.05,
+        "massMin": 1.35,
+        "massMax": 3.0,
+        "worthSec": 2.0,
+        "base": 12.0,
+        "speed": 0.78
+      }
     }
   },
-
   "harvest": {
-    "_comment": "Этап 9: заросли биомассы, пасти, вакуоль, колония. Цена улучшения = ceil(costBase * costGrowth^ур). Пузырёк = (unitBase * глоб.множитель + unitWorthSec * доход/с) * (1 + compression * ур).",
+    "_comment": "Этап 9–11: заросли биомассы, ПЫЛЕСОС, вакуоль, колония. Цена улучшения = ceil(costBase * costGrowth^ур * множитель эпохи). Пузырёк = (unitBase * глоб.множитель + unitWorthSec * доход/с) * сжатие * переработка * бонус уровня роста.",
     "cellSize": 26,
     "density": 0.52,
     "regrowSec": 75,
@@ -175,33 +540,100 @@
     "baseCapacity": 50,
     "capacityGrowth": 1.18,
     "compressionPerLevel": 0.03,
-    "mawOrbit": 1.35,
-    "mawBaseRadius": 13,
-    "mawRadiusPerTeeth": 1.1,
-    "mawBaseSpin": 2.2,
-    "mawSpinPerLevel": 0.06,
-    "cellsPerSecPerMaw": 5,
     "speedPerLevel": 0.04,
-    "sizePerLevel": 0.04,
     "magnetPerLevel": 14,
     "biteCargoLoss": 0.25,
     "eatenCargoLoss": 0.5,
     "upgrades": [
-      { "id": "maw_count",   "tab": "maws",    "maxLevel": 7,  "costBase": 60,  "costGrowth": 3.4 },
-      { "id": "teeth",       "tab": "maws",    "maxLevel": 30, "costBase": 25,  "costGrowth": 1.42 },
-      { "id": "spin",        "tab": "maws",    "maxLevel": 30, "costBase": 30,  "costGrowth": 1.40 },
-      { "id": "speed",       "tab": "body",    "maxLevel": 30, "costBase": 35,  "costGrowth": 1.43 },
-      { "id": "size",        "tab": "body",    "maxLevel": 20, "costBase": 90,  "costGrowth": 1.60 },
-      { "id": "capacity",    "tab": "vacuole", "maxLevel": 40, "costBase": 20,  "costGrowth": 1.36 },
-      { "id": "compression", "tab": "vacuole", "maxLevel": 30, "costBase": 70,  "costGrowth": 1.50 },
-      { "id": "magnet",      "tab": "vacuole", "maxLevel": 15, "costBase": 110, "costGrowth": 1.70 },
-      { "id": "symbionts",   "tab": "colony",  "maxLevel": 12, "costBase": 150, "costGrowth": 2.10 },
-      { "id": "processing",  "tab": "colony",  "maxLevel": 25, "costBase": 120, "costGrowth": 1.55 },
-      { "id": "receiver",    "tab": "colony",  "maxLevel": 10, "costBase": 200, "costGrowth": 1.80 }
+      {
+        "id": "suction",
+        "tab": "vacuum",
+        "maxLevel": 30,
+        "costBase": 30,
+        "costGrowth": 1.4
+      },
+      {
+        "id": "range",
+        "tab": "vacuum",
+        "maxLevel": 25,
+        "costBase": 40,
+        "costGrowth": 1.45
+      },
+      {
+        "id": "width",
+        "tab": "vacuum",
+        "maxLevel": 16,
+        "costBase": 60,
+        "costGrowth": 1.55
+      },
+      {
+        "id": "speed",
+        "tab": "body",
+        "maxLevel": 30,
+        "costBase": 35,
+        "costGrowth": 1.43
+      },
+      {
+        "id": "growth",
+        "tab": "body",
+        "maxLevel": 20,
+        "costBase": 80,
+        "costGrowth": 1.6
+      },
+      {
+        "id": "capacity",
+        "tab": "vacuole",
+        "maxLevel": 40,
+        "costBase": 20,
+        "costGrowth": 1.36
+      },
+      {
+        "id": "compression",
+        "tab": "vacuole",
+        "maxLevel": 30,
+        "costBase": 70,
+        "costGrowth": 1.5
+      },
+      {
+        "id": "magnet",
+        "tab": "vacuole",
+        "maxLevel": 15,
+        "costBase": 110,
+        "costGrowth": 1.7
+      },
+      {
+        "id": "symbionts",
+        "tab": "colony",
+        "maxLevel": 12,
+        "costBase": 150,
+        "costGrowth": 2.1
+      },
+      {
+        "id": "processing",
+        "tab": "colony",
+        "maxLevel": 25,
+        "costBase": 120,
+        "costGrowth": 1.55
+      },
+      {
+        "id": "receiver",
+        "tab": "colony",
+        "maxLevel": 10,
+        "costBase": 200,
+        "costGrowth": 1.8
+      }
     ],
     "symbiontUnitsPerSec": 0.6,
     "processingPerLevel": 0.03,
-    "upgradeCostEpochMult": [1, 8, 800, 1e5, 1e7, 3e9, 1e12],
+    "upgradeCostEpochMult": [
+      1,
+      8,
+      800,
+      100000.0,
+      10000000.0,
+      3000000000.0,
+      1000000000000.0
+    ],
     "receiverRadiusPerLevel": 0.12,
     "receiverRatePerLevel": 0.25,
     "lairs": {
@@ -213,52 +645,194 @@
       "bossRadiusStep": 30
     },
     "bossFight": {
-      "_comment": "Урон в секунду = DPS организма × (1 + tapBonus) × пасти^0.8 × (радиус пасти / базовый)^0.5 × (вращение / базовое). Босс восстанавливает regenPerSec от максимума, когда его не кусают.",
+      "_comment": "Урон по боссу = DPS организма × (1 + tapBonus) × мощность^a × дальность^b × ширина^c, пока босс в конусе пылесоса. Регенерация regenPerSec, когда не тянешь.",
       "tapBonus": 0.6,
-      "mawExp": [0.6, 0.3, 0.6],
       "regenPerSec": 0.02,
       "dashEverySec": 4.5,
-      "dashSpeed": 2.2
+      "dashSpeed": 2.2,
+      "vacuumExp": [
+        0.75,
+        0.35,
+        0.35
+      ]
+    },
+    "vacuum": {
+      "_comment": "Пылесос: конус перед клеткой. Дальность — в радиусах клетки, угол — половина раствора в градусах, мощность — ячеек в секунду.",
+      "rangeBase": 1.7,
+      "rangePerLevel": 0.1,
+      "angleBase": 26,
+      "anglePerLevel": 3,
+      "angleMax": 75,
+      "cellsPerSec": 12,
+      "powerPerLevel": 0.12,
+      "pullStrength": 1.4
     }
   },
-
   "liveops": {
     "_comment": "Удержание: ежедневный вход (цикл 7 дней), 3 задания дня, событие выходных. incomeMinutes — минуты текущего дохода без бустов.",
     "dailyLogin": {
       "graceDays": 1,
       "rewards": [
-        { "protein": 10, "incomeMinutes": 5 },
-        { "protein": 15, "incomeMinutes": 10 },
-        { "protein": 20, "incomeMinutes": 10 },
-        { "protein": 25, "incomeMinutes": 15 },
-        { "protein": 30, "incomeMinutes": 15 },
-        { "protein": 40, "incomeMinutes": 20 },
-        { "protein": 60, "incomeMinutes": 30, "chest": "epic" }
+        {
+          "protein": 10,
+          "incomeMinutes": 5
+        },
+        {
+          "protein": 15,
+          "incomeMinutes": 10
+        },
+        {
+          "protein": 20,
+          "incomeMinutes": 10
+        },
+        {
+          "protein": 25,
+          "incomeMinutes": 15
+        },
+        {
+          "protein": 30,
+          "incomeMinutes": 15
+        },
+        {
+          "protein": 40,
+          "incomeMinutes": 20
+        },
+        {
+          "protein": 60,
+          "incomeMinutes": 30,
+          "chest": "epic"
+        }
       ]
     },
     "quests": {
       "perDay": 3,
       "pool": [
-        { "id": "eat",        "track": "eat",        "target": 60,  "perEpoch": 10, "minEpoch": 1, "protein": 10, "incomeMinutes": 5 },
-        { "id": "collectors", "track": "collectors", "target": 20,  "perEpoch": 10, "minEpoch": 1, "protein": 10, "incomeMinutes": 8 },
-        { "id": "golden",     "track": "golden",     "target": 3,   "perEpoch": 0,  "minEpoch": 1, "protein": 15, "incomeMinutes": 5 },
-        { "id": "organelles", "track": "organelles", "target": 3,   "perEpoch": 0,  "minEpoch": 1, "protein": 5,  "incomeMinutes": 10 },
-        { "id": "mutations",  "track": "mutations",  "target": 2,   "perEpoch": 1,  "minEpoch": 1, "protein": 10, "incomeMinutes": 8 },
-        { "id": "raids",      "track": "raids",      "target": 2,   "perEpoch": 0,  "minEpoch": 3, "protein": 20, "incomeMinutes": 5 },
-        { "id": "evolve",     "track": "evolve",     "target": 1,   "perEpoch": 0,  "minEpoch": 1, "protein": 15, "incomeMinutes": 10 },
-        { "id": "deliver",    "track": "deliver",    "target": 200, "perEpoch": 150, "minEpoch": 1, "protein": 12, "incomeMinutes": 8 },
-        { "id": "upgrades",   "track": "upgrades",   "target": 5,   "perEpoch": 1,  "minEpoch": 1, "protein": 10, "incomeMinutes": 8 }
+        {
+          "id": "eat",
+          "track": "eat",
+          "target": 60,
+          "perEpoch": 10,
+          "minEpoch": 1,
+          "protein": 10,
+          "incomeMinutes": 5
+        },
+        {
+          "id": "collectors",
+          "track": "collectors",
+          "target": 20,
+          "perEpoch": 10,
+          "minEpoch": 1,
+          "protein": 10,
+          "incomeMinutes": 8
+        },
+        {
+          "id": "golden",
+          "track": "golden",
+          "target": 3,
+          "perEpoch": 0,
+          "minEpoch": 1,
+          "protein": 15,
+          "incomeMinutes": 5
+        },
+        {
+          "id": "organelles",
+          "track": "organelles",
+          "target": 3,
+          "perEpoch": 0,
+          "minEpoch": 1,
+          "protein": 5,
+          "incomeMinutes": 10
+        },
+        {
+          "id": "mutations",
+          "track": "mutations",
+          "target": 2,
+          "perEpoch": 1,
+          "minEpoch": 1,
+          "protein": 10,
+          "incomeMinutes": 8
+        },
+        {
+          "id": "raids",
+          "track": "raids",
+          "target": 2,
+          "perEpoch": 0,
+          "minEpoch": 3,
+          "protein": 20,
+          "incomeMinutes": 5
+        },
+        {
+          "id": "evolve",
+          "track": "evolve",
+          "target": 1,
+          "perEpoch": 0,
+          "minEpoch": 1,
+          "protein": 15,
+          "incomeMinutes": 10
+        },
+        {
+          "id": "deliver",
+          "track": "deliver",
+          "target": 200,
+          "perEpoch": 150,
+          "minEpoch": 1,
+          "protein": 12,
+          "incomeMinutes": 8
+        },
+        {
+          "id": "upgrades",
+          "track": "upgrades",
+          "target": 5,
+          "perEpoch": 1,
+          "minEpoch": 1,
+          "protein": 10,
+          "incomeMinutes": 8
+        }
       ],
-      "allDoneBonus": { "chest": "rare", "protein": 20 }
+      "allDoneBonus": {
+        "chest": "rare",
+        "protein": 20
+      }
     },
     "events": [
-      { "id": "bloom", "weekdays": [6, 7], "goldenIntervalMult": 0.5 }
+      {
+        "id": "bloom",
+        "weekdays": [
+          6,
+          7
+        ],
+        "goldenIntervalMult": 0.5
+      }
     ]
   },
-
   "numberFormat": {
-    "suffixes": ["", "K", "M", "B", "T", "aa", "ab", "ac", "ad", "ae", "af", "ag", "ah"],
+    "suffixes": [
+      "",
+      "K",
+      "M",
+      "B",
+      "T",
+      "aa",
+      "ab",
+      "ac",
+      "ad",
+      "ae",
+      "af",
+      "ag",
+      "ah"
+    ],
     "afterSuffixes": "scientific",
     "decimals": 2
+  },
+  "growth": {
+    "_comment": "Этап 11: уровни роста. Уровень = 1 + floor(log_step(масса)). Мир масштабируется в sqrt(step)^(уровень-1) раз — камера поднимается, появляются новые организмы.",
+    "massStep": 5,
+    "maxLevel": 10,
+    "valueBonusPerLevel": 0.25,
+    "growthBase": 0.045,
+    "massPerUnit": 0.004,
+    "growthPerLevel": 0.1,
+    "screenRadius": 34,
+    "levelUpProtein": 15
   }
 }
