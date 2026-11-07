@@ -124,7 +124,8 @@
       "offline_double":  { "mult": 2.0, "minOfflineSec": 1800, "dailyCap": 3 },
       "rare_mutation":   { "firstFreeChestSec": 600, "freeEverySec": 14400, "adEverySec": 1800, "dailyCap": 3, "rarityWeights": { "rare": 70, "epic": 25, "legendary": 5 } },
       "skip_incubation": { "skipSec": 1800, "dailyCap": 3 },
-      "boss_frenzy":     { "dpsMult": 1.5, "extraSec": 10, "perFight": 1, "dailyCap": 5 }
+      "boss_frenzy":     { "dpsMult": 1.5, "extraSec": 10, "perFight": 1, "dailyCap": 5 },
+      "free_upgrade":    { "dailyCap": 5, "minShareOfBalance": 0.2 }
     },
     "interstitial": {
       "placements": ["after_offline_window", "after_panspermia"],
@@ -153,13 +154,48 @@
     "hitRegenSec": 12,
     "growthFromPrey": 0.22,
     "massIncomeBonus": 0.15,
-    "maxEntities": 170,
+    "maxEntities": 120,
     "prey": {
       "molecule":  { "share": 0.50, "massMin": 0.04, "massMax": 0.18, "worthSec": 0.06, "base": 1.0, "speed": 0.0 },
       "bacterium": { "share": 0.33, "massMin": 0.15, "massMax": 0.60, "worthSec": 0.18, "base": 2.0, "speed": 0.55 },
       "rival":     { "share": 0.12, "massMin": 0.55, "massMax": 1.50, "worthSec": 1.00, "base": 6.0, "speed": 0.70 },
       "predator":  { "share": 0.05, "massMin": 1.35, "massMax": 3.00, "worthSec": 2.00, "base": 12.0, "speed": 0.78 }
     }
+  },
+
+  "harvest": {
+    "_comment": "Этап 9: заросли биомассы, пасти, вакуоль, колония. Цена улучшения = ceil(costBase * costGrowth^ур). Пузырёк = (unitBase * глоб.множитель + unitWorthSec * доход/с) * (1 + compression * ур).",
+    "cellSize": 26,
+    "density": 0.52,
+    "regrowSec": 75,
+    "colonyRadius": 140,
+    "deliverPerSec": 80,
+    "unitBase": 1.0,
+    "unitWorthSec": 0.04,
+    "baseCapacity": 50,
+    "capacityGrowth": 1.18,
+    "compressionPerLevel": 0.10,
+    "mawOrbit": 1.35,
+    "mawBaseRadius": 13,
+    "mawRadiusPerTeeth": 1.1,
+    "mawBaseSpin": 2.2,
+    "mawSpinPerLevel": 0.18,
+    "cellsPerSecPerMaw": 7,
+    "speedPerLevel": 0.04,
+    "sizePerLevel": 0.04,
+    "magnetPerLevel": 14,
+    "biteCargoLoss": 0.25,
+    "eatenCargoLoss": 0.5,
+    "upgrades": [
+      { "id": "maw_count",   "tab": "maws",    "maxLevel": 7,  "costBase": 60,  "costGrowth": 3.4 },
+      { "id": "teeth",       "tab": "maws",    "maxLevel": 30, "costBase": 25,  "costGrowth": 1.42 },
+      { "id": "spin",        "tab": "maws",    "maxLevel": 30, "costBase": 30,  "costGrowth": 1.40 },
+      { "id": "speed",       "tab": "body",    "maxLevel": 30, "costBase": 35,  "costGrowth": 1.43 },
+      { "id": "size",        "tab": "body",    "maxLevel": 20, "costBase": 90,  "costGrowth": 1.60 },
+      { "id": "capacity",    "tab": "vacuole", "maxLevel": 40, "costBase": 20,  "costGrowth": 1.36 },
+      { "id": "compression", "tab": "vacuole", "maxLevel": 30, "costBase": 70,  "costGrowth": 1.50 },
+      { "id": "magnet",      "tab": "vacuole", "maxLevel": 15, "costBase": 110, "costGrowth": 1.70 }
+    ]
   },
 
   "liveops": {
@@ -185,7 +221,9 @@
         { "id": "organelles", "track": "organelles", "target": 3,   "perEpoch": 0,  "minEpoch": 1, "protein": 5,  "incomeMinutes": 10 },
         { "id": "mutations",  "track": "mutations",  "target": 2,   "perEpoch": 1,  "minEpoch": 1, "protein": 10, "incomeMinutes": 8 },
         { "id": "raids",      "track": "raids",      "target": 2,   "perEpoch": 0,  "minEpoch": 3, "protein": 20, "incomeMinutes": 5 },
-        { "id": "evolve",     "track": "evolve",     "target": 1,   "perEpoch": 0,  "minEpoch": 1, "protein": 15, "incomeMinutes": 10 }
+        { "id": "evolve",     "track": "evolve",     "target": 1,   "perEpoch": 0,  "minEpoch": 1, "protein": 15, "incomeMinutes": 10 },
+        { "id": "deliver",    "track": "deliver",    "target": 200, "perEpoch": 150, "minEpoch": 1, "protein": 12, "incomeMinutes": 8 },
+        { "id": "upgrades",   "track": "upgrades",   "target": 5,   "perEpoch": 1,  "minEpoch": 1, "protein": 10, "incomeMinutes": 8 }
       ],
       "allDoneBonus": { "chest": "rare", "protein": 20 }
     },
