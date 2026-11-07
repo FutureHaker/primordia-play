@@ -76,7 +76,7 @@
       "predator_amoeba": { "hp": 6.0e3 },
       "amoeba_queen":    { "hp": 3.0e4 },
       "virus":           { "hp": 1.5e5 },
-      "observer_lens":   { "hp": 1.0e6 }
+      "observer_lens":   { "hp": 3.0e6 }
     }
   },
 
@@ -134,6 +134,38 @@
       "disabledByNoAdsPurchase": true
     },
     "kpi": { "rewardedPerDauMin": 3, "rewardedPerDauMax": 6 }
+  },
+
+  "liveops": {
+    "_comment": "Удержание: ежедневный вход (цикл 7 дней), 3 задания дня, событие выходных. incomeMinutes — минуты текущего дохода без бустов.",
+    "dailyLogin": {
+      "graceDays": 1,
+      "rewards": [
+        { "protein": 10, "incomeMinutes": 5 },
+        { "protein": 15, "incomeMinutes": 10 },
+        { "protein": 20, "incomeMinutes": 10 },
+        { "protein": 25, "incomeMinutes": 15 },
+        { "protein": 30, "incomeMinutes": 15 },
+        { "protein": 40, "incomeMinutes": 20 },
+        { "protein": 60, "incomeMinutes": 30, "chest": "epic" }
+      ]
+    },
+    "quests": {
+      "perDay": 3,
+      "pool": [
+        { "id": "taps",       "track": "taps",       "target": 150, "perEpoch": 0,  "minEpoch": 1, "protein": 10, "incomeMinutes": 5 },
+        { "id": "collectors", "track": "collectors", "target": 20,  "perEpoch": 10, "minEpoch": 1, "protein": 10, "incomeMinutes": 8 },
+        { "id": "golden",     "track": "golden",     "target": 3,   "perEpoch": 0,  "minEpoch": 1, "protein": 15, "incomeMinutes": 5 },
+        { "id": "organelles", "track": "organelles", "target": 3,   "perEpoch": 0,  "minEpoch": 1, "protein": 5,  "incomeMinutes": 10 },
+        { "id": "mutations",  "track": "mutations",  "target": 2,   "perEpoch": 1,  "minEpoch": 1, "protein": 10, "incomeMinutes": 8 },
+        { "id": "raids",      "track": "raids",      "target": 2,   "perEpoch": 0,  "minEpoch": 3, "protein": 20, "incomeMinutes": 5 },
+        { "id": "evolve",     "track": "evolve",     "target": 1,   "perEpoch": 0,  "minEpoch": 1, "protein": 15, "incomeMinutes": 10 }
+      ],
+      "allDoneBonus": { "chest": "rare", "protein": 20 }
+    },
+    "events": [
+      { "id": "bloom", "weekdays": [6, 7], "goldenIntervalMult": 0.5 }
+    ]
   },
 
   "numberFormat": {
