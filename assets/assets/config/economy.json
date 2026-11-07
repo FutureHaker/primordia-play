@@ -73,10 +73,10 @@
     "tapDamageShareOfDps": 0.12,
     "bossFightSec": 30,
     "bosses": {
-      "predator_amoeba": { "hp": 6.0e3 },
-      "amoeba_queen":    { "hp": 3.0e4 },
-      "virus":           { "hp": 1.5e5 },
-      "observer_lens":   { "hp": 3.0e6 }
+      "predator_amoeba": { "hp": 3.0e4 },
+      "amoeba_queen":    { "hp": 2.0e5 },
+      "virus":           { "hp": 1.5e6 },
+      "observer_lens":   { "hp": 2.2e7 }
     }
   },
 
@@ -171,16 +171,16 @@
     "colonyRadius": 140,
     "deliverPerSec": 80,
     "unitBase": 1.0,
-    "unitWorthSec": 0.04,
+    "unitWorthSec": 0.002,
     "baseCapacity": 50,
     "capacityGrowth": 1.18,
-    "compressionPerLevel": 0.10,
+    "compressionPerLevel": 0.03,
     "mawOrbit": 1.35,
     "mawBaseRadius": 13,
     "mawRadiusPerTeeth": 1.1,
     "mawBaseSpin": 2.2,
-    "mawSpinPerLevel": 0.18,
-    "cellsPerSecPerMaw": 7,
+    "mawSpinPerLevel": 0.06,
+    "cellsPerSecPerMaw": 5,
     "speedPerLevel": 0.04,
     "sizePerLevel": 0.04,
     "magnetPerLevel": 14,
@@ -194,8 +194,32 @@
       { "id": "size",        "tab": "body",    "maxLevel": 20, "costBase": 90,  "costGrowth": 1.60 },
       { "id": "capacity",    "tab": "vacuole", "maxLevel": 40, "costBase": 20,  "costGrowth": 1.36 },
       { "id": "compression", "tab": "vacuole", "maxLevel": 30, "costBase": 70,  "costGrowth": 1.50 },
-      { "id": "magnet",      "tab": "vacuole", "maxLevel": 15, "costBase": 110, "costGrowth": 1.70 }
-    ]
+      { "id": "magnet",      "tab": "vacuole", "maxLevel": 15, "costBase": 110, "costGrowth": 1.70 },
+      { "id": "symbionts",   "tab": "colony",  "maxLevel": 12, "costBase": 150, "costGrowth": 2.10 },
+      { "id": "processing",  "tab": "colony",  "maxLevel": 25, "costBase": 120, "costGrowth": 1.55 },
+      { "id": "receiver",    "tab": "colony",  "maxLevel": 10, "costBase": 200, "costGrowth": 1.80 }
+    ],
+    "symbiontUnitsPerSec": 0.6,
+    "processingPerLevel": 0.03,
+    "upgradeCostEpochMult": [1, 8, 800, 1e5, 1e7, 3e9, 1e12],
+    "receiverRadiusPerLevel": 0.12,
+    "receiverRatePerLevel": 0.25,
+    "lairs": {
+      "_comment": "Логово босса: в своей части океана, дальше от колонии с каждой эпохой. Направление — детерминированно по id босса.",
+      "distance": 2600,
+      "distanceStep": 1100,
+      "radius": 460,
+      "bossRadius": 120,
+      "bossRadiusStep": 30
+    },
+    "bossFight": {
+      "_comment": "Урон в секунду = DPS организма × (1 + tapBonus) × пасти^0.8 × (радиус пасти / базовый)^0.5 × (вращение / базовое). Босс восстанавливает regenPerSec от максимума, когда его не кусают.",
+      "tapBonus": 0.6,
+      "mawExp": [0.6, 0.3, 0.6],
+      "regenPerSec": 0.02,
+      "dashEverySec": 4.5,
+      "dashSpeed": 2.2
+    }
   },
 
   "liveops": {
